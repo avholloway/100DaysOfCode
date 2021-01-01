@@ -13,3 +13,8 @@ print("New lines can be created with a backslash and n.")
 name = input("name: ")
 print(f"{len(name)=}")
 
+# 1.4
+a = input("a: ")
+b = input("b: ")
+a, b = b, a
+print(f"{a=}\n{b=}")
