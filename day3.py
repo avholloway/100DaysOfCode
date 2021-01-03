@@ -48,6 +48,9 @@ year = int(input("Which year do you want to check? "))
 # except if also evenly divisible by 100
 # unless if also evenly divisible by 400
 
+# golfed example which passes 3.3 testing
+# print(f"{'Leap year.' if not (year % (4 if year % 25 else 16)) else 'Not leap year.'}")
+
 evenly_divisible_by_4 = not year % 4
 evenly_divisible_by_100 = not year % 100
 evenly_divisible_by_400 = not year % 400
