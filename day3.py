@@ -6,4 +6,7 @@ number = int(input("Which number do you want to check? "))
 
 #Write your code below this line 👇
 
-print(f"This is an {'even' if (number % 2 == 0) else 'odd'} number")
+print(f"This is an {'odd' if number % 2 else 'even'} number")
+
+# 3.2 - 
+# ---------------------------------------------------------
