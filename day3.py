@@ -38,24 +38,46 @@ def two():
 
 # 3.3 - leap year
 # ---------------------------------------------------------
+def three():
+  # 🚨 Don't change the code below 👇
+  year = int(input("Which year do you want to check? "))
+  # 🚨 Don't change the code above 👆
+
+  #Write your code below this line 👇
+
+  # evenly divisible by 4
+  # except if also evenly divisible by 100
+  # unless if also evenly divisible by 400
+
+  # golfed example which passes 3.3 testing
+  # print(f"{'Leap year.' if not (year % (4 if year % 25 else 16)) else 'Not leap year.'}")
+
+  evenly_divisible_by_4 = not year % 4
+  evenly_divisible_by_100 = not year % 100
+  evenly_divisible_by_400 = not year % 400
+
+  if evenly_divisible_by_4 and (not evenly_divisible_by_100 or evenly_divisible_by_400) :
+    print("Leap year.")
+  else:
+    print("Not leap year.")
+
+# 3.4 - pizza order
+# ---------------------------------------------------------
 # 🚨 Don't change the code below 👇
-year = int(input("Which year do you want to check? "))
+print("Welcome to Python Pizza Deliveries!")
+size = input("What size pizza do you want? S, M, or L ")
+add_pepperoni = input("Do you want pepperoni? Y or N ")
+extra_cheese = input("Do you want extra cheese? Y or N ")
 # 🚨 Don't change the code above 👆
 
 #Write your code below this line 👇
 
-# evenly divisible by 4
-# except if also evenly divisible by 100
-# unless if also evenly divisible by 400
+cost = {"S": 15, "M": 20, "L": 25}[size]
 
-# golfed example which passes 3.3 testing
-# print(f"{'Leap year.' if not (year % (4 if year % 25 else 16)) else 'Not leap year.'}")
+if add_pepperoni == "Y":
+  cost += {"S": 2, "M": 3, "L": 3}[size]
 
-evenly_divisible_by_4 = not year % 4
-evenly_divisible_by_100 = not year % 100
-evenly_divisible_by_400 = not year % 400
+if extra_cheese == "Y":
+  cost += {"S": 2, "M": 3, "L": 3}[size]
 
-if not evenly_divisible_by_4 or (evenly_divisible_by_100 and not evenly_divisible_by_400) :
-  print("Not leap year.")
-else:
-  print("Leap year.")
+print(f"Your final bill is: {cost}.")
