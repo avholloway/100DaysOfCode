@@ -88,16 +88,15 @@ name2 = input("What is their name? \n")
 
 #Write your code below this line 👇
 
-name1 = name1.lower()
-name2 = name2.lower()
+names = name1.lower() + name2.lower()
 
 true_score = 0
 for letter in "true":
-  true_score += name1.count(letter) + name2.count(letter)
+  true_score += names.count(letter)
 
 love_score = 0
 for letter in "love":
-  love_score += name1.count(letter) + name2.count(letter)
+  love_score += names.count(letter)
 
 score = int(f"{true_score}{love_score}")
 print(f"Your score is {score}", end="")
