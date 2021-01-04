@@ -129,23 +129,23 @@ print("where we don't use capital letters and your mission is to find the treasu
 def play():
 
   # question 1
-  direction = input("\nwhich way first: left or right, matey? ")
+  direction = input("\nwhich way first, matey: left or right? ")
   if direction.lower() != "left":
-    print("\noh no. you're not going to like this. you caught the scurves...and died. uh, yeah, what a twist.")
+    print("\noh no. you're not going to like this. you caught the scurves...and died. oh, yeah, what a twist.")
     return
 
   # question 2
-  action = input("\nswim or wait poppet? ")
+  action = input("\nhigh tide in the bay, strumpet, shall we: wait or swim? ")
   if action != "wait":
-    print("\nyou scalawag, you can't swim. say hello to davey jones for me...oh and you died.")
+    print("\nyou wench, you can't swim. say hello to davey jones for me...oh and you died.")
     return
 
   # question 3
   door = input("\nwhich door will it be ya bilge rat: red, blue or yellow? ")
   if door != "yellow":
-    print("\naaaaaaaaaaaaaand you survived. no, actually you died.")
+    print("\naaaaaaaaaaaaaand you survived. no, actually, you died.")
     return
 
-  print("\na left turn ye did, then waited before ye picked the yellow door. smart, smart, very smart. the treasure be yours me matey.")
+  print("\na left turn ye did, then waited before ye picked the yellow door. smart, smart, very smart. the treasure be yours me hearty...yo ho.")
 
 play()
