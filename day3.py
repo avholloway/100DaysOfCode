@@ -80,30 +80,72 @@ def four():
 
 # 3.5 - Love calc
 # ---------------------------------------------------------
-# 🚨 Don't change the code below 👇
-print("Welcome to the Love Calculator!")
-name1 = input("What is your name? \n")
-name2 = input("What is their name? \n")
-# 🚨 Don't change the code above 👆
+def five():
+  # 🚨 Don't change the code below 👇
+  print("Welcome to the Love Calculator!")
+  name1 = input("What is your name? \n")
+  name2 = input("What is their name? \n")
+  # 🚨 Don't change the code above 👆
 
-#Write your code below this line 👇
+  #Write your code below this line 👇
 
-names = name1.lower() + name2.lower()
+  names = name1.lower() + name2.lower()
 
-true_score = 0
-for letter in "true":
-  true_score += names.count(letter)
+  true_score = 0
+  for letter in "true":
+    true_score += names.count(letter)
 
-love_score = 0
-for letter in "love":
-  love_score += names.count(letter)
+  love_score = 0
+  for letter in "love":
+    love_score += names.count(letter)
 
-score = int(f"{true_score}{love_score}")
-print(f"Your score is {score}", end="")
+  score = int(f"{true_score}{love_score}")
+  print(f"Your score is {score}", end="")
 
-if score < 10 or score > 90:
-  print(", you go together like coke and mentos", end="")
-elif score > 40 and score < 50:
-  print(", you are alright together", end="")
+  if score < 10 or score > 90:
+    print(", you go together like coke and mentos", end="")
+  elif score > 40 and score < 50:
+    print(", you are alright together", end="")
 
-print(".")
+  print(".")
+
+# Final - treasure island game
+# ---------------------------------------------------------
+print('''
+            88                                          
+            ""                         ,d               
+                                       88               
+8b,dPPYba,  88 8b,dPPYba, ,adPPYYba, MM88MMM ,adPPYba, ,adPPYba,  
+88P'    "8a 88 88P'   "Y8 ""     `Y8   88   a8P_____88 I8[    ""  
+88       d8 88 88         ,adPPPPP88   88   8PP"""""""  `"Y8ba,  
+88b,   ,a8" 88 88         88,    ,88   88,  "8b,   ,aa aa    ]8I  
+88`YbbdP"'  88 88         `"8bbdP"Y8   "Y888 `"Ybbd8"' `"YbbdP"'  
+88                                                      
+88                                                    
+''')
+print("\nwelcome to the game of pirates.\n")
+print("where we don't use capital letters and your mission is to find the treasure.")
+
+def play():
+
+  # question 1
+  direction = input("\nwhich way first: left or right, matey? ")
+  if direction.lower() != "left":
+    print("\noh no. you're not going to like this. you caught the scurves...and died. uh, yeah, what a twist.")
+    return
+
+  # question 2
+  action = input("\nswim or wait poppet? ")
+  if action != "wait":
+    print("\nyou scalawag, you can't swim. say hello to davey jones for me...oh and you died.")
+    return
+
+  # question 3
+  door = input("\nwhich door will it be ya bilge rat: red, blue or yellow? ")
+  if door != "yellow":
+    print("\naaaaaaaaaaaaaand you survived. no, actually you died.")
+    return
+
+  print("\na left turn ye did, then waited before ye picked the yellow door. smart, smart, very smart. the treasure be yours me matey.")
+
+play()
