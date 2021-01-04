@@ -72,12 +72,7 @@ extra_cheese = input("Do you want extra cheese? Y or N ")
 
 #Write your code below this line 👇
 
-cost = {"S": 15, "M": 20, "L": 25}[size]
-
-if add_pepperoni == "Y":
-  cost += {"S": 2, "M": 3, "L": 3}[size]
-
-if extra_cheese == "Y":
-  cost += {"S": 2, "M": 3, "L": 3}[size]
-
-print(f"Your final bill is: {cost}.")
+cost = {"S": 15, "M": 20, "L": 25}.get(size, 0)
+cost += {"YS": 2, "YM": 3, "YL": 3}.get(add_pepperoni + size, 0)
+cost += {"YS": 1, "YM": 1, "YL": 1}.get(extra_cheese + size, 0)
+print(f"Your final bill is: ${cost}.")
