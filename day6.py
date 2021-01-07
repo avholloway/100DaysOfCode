@@ -1,4 +1,4 @@
 # 6.1 - user defined functions
 # -------------------------------------
 def myfunction():
-  pass
+    print("hello day 6")
