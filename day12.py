@@ -16,9 +16,9 @@ logo = """
 print(logo)
 
 from random import randint
-target = randint(1, 1_000_000)
+target = randint(1, 100)
 
-print("sinister is thinking of a number between 1 and 1,000,000.\n")
+print("sinister is thinking of a number between 1 and 100.\n")
 difficulty = input("hard or easy: ")
 attempts = 10 if difficulty == "easy" else 5
 print(f"\nyou will have {attempts} attemps...let's go...\n")
