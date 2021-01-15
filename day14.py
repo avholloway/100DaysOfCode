@@ -54,7 +54,8 @@ while True:
     guess = input("Who has more followers? Type 'A' or 'B': ")
 
     # if they were wrong, just quit
-    if guess != winner: break
+    if guess != winner:
+        break
 
     # else, increment the score and keep it going...
     score += 1
