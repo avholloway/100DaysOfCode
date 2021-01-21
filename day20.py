@@ -8,6 +8,9 @@ class Snake:
     def __init__(self):
         """a new snake is born"""
         
+        # initial size
+        self.inital_size = 25
+        
         # move directions
         self.UP = 90
         self.DOWN = 270
@@ -19,7 +22,7 @@ class Snake:
         self.segments = []
     
         # create the head and two additional segments
-        for i in range(30):
+        for i in range(self.inital_size):
             segment = Turtle(shape="square")
             segment.penup()
             segment.setx(i * self.SEGWIDTH * -1)  # shift left to make a snake
@@ -39,6 +42,7 @@ class Snake:
     
         # now move the head
         self.head.forward(self.SEGWIDTH)
+        
         return self
     
     
@@ -94,6 +98,6 @@ running = True
 while running:
     screen.update()
     snake.slither()
-    sleep(0.1)
+    sleep(1)
     
 screen.exitonclick()
