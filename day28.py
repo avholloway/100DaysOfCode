@@ -16,61 +16,73 @@ progress_complete = "▪"
 running = False
 timer = None
 
-# === Window ===========================================================================================================
-window = Tk()
-window.config(padx=10, pady=10, bg=YELLOW)
-window.title("Pomodoro")
-
-# ---------------------------- TIMER RESET ------------------------------- #
-def button2_on_click():
-    global timer, cycles, cycle_number, running
-    
-    window.after_cancel(timer)
-    running = False
-    cycle_number = 0
-    label1.config(text="Timer")
-    label2.config(text=progress_incomplete * 4)
-    canvas.itemconfig(timer_text, text=f"00:00")
-
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
-def button1_on_click():
+# === Timer Start Functionality  =======================================================================================
+def start_timer():
     global running
-
+    
     running = True
     cycle_number = 0
     label1.config(text="Work Time")
     label2.config(text=f"{progress_complete}{progress_incomplete * 3}")
     count_down(cycles[cycle_number] * 60)
+    
+def button1_on_click():
+    reset_timer()
+    start_timer()
 
 
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
+# === Timer Countdown Functionality ====================================================================================
 def count_down(count):
-    global timer, running, cycles, cycle_number
-
+    global timer, cycle_number
+    
     minutes = count // 60
     seconds = count % 60
     canvas.itemconfig(timer_text, text=f"{minutes:02}:{seconds:02}")
+    
     
     if count == 0:
         
         # a cycle count down just finished, move to next cycle
         cycle_number += 1
         
-        if cycle_number < len(cycles) - 1:
-            if running:
-                count_down(cycles[cycle_number] * 60)
-            
+        if running and cycle_number < len(cycles) - 1:
+            count_down(cycles[cycle_number] * 60)
+        
         # was it a work (even) or break (odd) cycle?
         if cycle_number % 2 == 0:
-            label2.config(text=f"{progress_complete * (cycle_number//2 + 1)}{progress_incomplete * (4 - (cycle_number//2 + 1))}")
+            label2.config(
+                text=f"{progress_complete * (cycle_number // 2 + 1)}{progress_incomplete * (4 - (cycle_number // 2 + 1))}")
             label1.config(text="Work Time")
         else:
             label1.config(text="Break Time")
             
     else:
+        
+        # we're in the middle of a countdown
         if running:
             timer = window.after(1000, count_down, count - 1)
+
+# === Timer Reset Functionality ========================================================================================
+def reset_timer():
+    global cycle_number, running
     
+    try:
+        window.after_cancel(timer)
+    except:
+        pass
+    running = False
+    cycle_number = 0
+    label1.config(text="Timer")
+    label2.config(text=progress_incomplete * 4)
+    canvas.itemconfig(timer_text, text=f"00:00")
+    
+def button2_on_click():
+    reset_timer()
+    
+# === Window ===========================================================================================================
+window = Tk()
+window.config(padx=10, pady=10, bg=YELLOW)
+window.title("Pomodoro")
 
 # === Label Title ======================================================================================================
 label_font = (FONT_NAME, 28, "bold")
