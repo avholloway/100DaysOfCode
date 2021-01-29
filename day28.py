@@ -97,7 +97,7 @@ timer_text = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT
 canvas.grid(columnspan=3, column=1, row=2, padx=40)
 
 # === Button 1 Start ===================================================================================================
-button1 = Button(text="Start", relief=GROOVE, command=button1_on_click)
+button1 = Button(text="Start", relief=GROOVE, highlightthickness=0, command=button1_on_click)
 button1.grid(column=1, row=3, pady=(20, 20))
 
 # === Label Progress ===================================================================================================
@@ -106,7 +106,7 @@ label2 = Label(text=progress_incomplete * 4, font=label_font, bg=YELLOW, fg=GREE
 label2.grid(column=2, row=3, pady=(20, 20))
 
 # === Button 2 Reset ===================================================================================================
-button2 = Button(text="Reset", relief=GROOVE, command=button2_on_click)
+button2 = Button(text="Reset", relief=GROOVE, highlightthickness=0, command=button2_on_click)
 button2.grid(column=3, row=3, pady=(20, 20))
 
 # === Program Loop =====================================================================================================
