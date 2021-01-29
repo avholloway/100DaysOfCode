@@ -11,6 +11,7 @@ SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 cycles = [WORK_MIN, SHORT_BREAK_MIN, WORK_MIN, SHORT_BREAK_MIN, WORK_MIN, SHORT_BREAK_MIN, WORK_MIN, LONG_BREAK_MIN]
 cycle_number = 0
+work_cycles = 4
 progress_incomplete = "▫"
 progress_complete = "▪"
 running = False
@@ -39,26 +40,29 @@ def count_down(count):
     seconds = count % 60
     canvas.itemconfig(timer_text, text=f"{minutes:02}:{seconds:02}")
     
-    
     if count == 0:
         
         # a cycle count down just finished, move to next cycle
         cycle_number += 1
         
-        if running and cycle_number < len(cycles) - 1:
+        # start a new cycle if there are more cycles left
+        if running and cycle_number < len(cycles):
             count_down(cycles[cycle_number] * 60)
         
-        # was it a work (even) or break (odd) cycle?
+        # was the cycle we just finished a work (even) or break (odd) cycle?
         if cycle_number % 2 == 0:
-            label2.config(
-                text=f"{progress_complete * (cycle_number // 2 + 1)}{progress_incomplete * (4 - (cycle_number // 2 + 1))}")
             label1.config(text="Work Time")
+            
+            # update our progress bar for the work cycle we're currently on (work cycles are half the total cycles)
+            work_cycle = cycle_number // 2 + 1
+            work_cycles_left = work_cycles - work_cycle
+            label2.config(text=f"{progress_complete * work_cycle}{progress_incomplete * work_cycles_left}")
         else:
             label1.config(text="Break Time")
             
     else:
         
-        # we're in the middle of a countdown
+        # we're in the middle of a countdown, just run again after 1 second
         if running:
             timer = window.after(1000, count_down, count - 1)
 
