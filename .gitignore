@@ -1,3 +1,7 @@
+# Private Files
+test.py
+day29data.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
