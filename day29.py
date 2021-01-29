@@ -1,21 +1,42 @@
-import random
-from tkinter import *
 import pyperclip
+from tkinter import *
+from random import shuffle
 from tkinter import messagebox
 
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+# === Password Generator ===============================================================================================
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
+            'h', 'i', 'j', 'k', 'l', 'm', 'n',
+            'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 def generate_random_password():
-    random.shuffle(letters)
-    random.shuffle(numbers)
-    random.shuffle(symbols)
-    pw_letters = letters[:4]
+    # shuffle the starting positions of our character sets
+    shuffle(letters)
+    shuffle(numbers)
+    shuffle(symbols)
+    
+    # grab some lower case letters
+    pw_letters_lower = letters[:2]
+    
+    # grab some upper case letters
+    shuffle(letters)
+    pw_letters_upper = [letter.upper() for letter in letters][:2]
+    
+    # some numbers
     pw_numbers = numbers[:4]
+    
+    # And some symbols
     pw_symbols = symbols[:4]
-    random_password = pw_letters + pw_numbers + pw_symbols
-    random.shuffle(random_password)
+    
+    # put it all in one big list of chars
+    random_password = pw_letters_lower + pw_letters_upper + pw_numbers + pw_symbols
+    
+    # give it a good shake
+    shuffle(random_password)
+    
+    # and viola, a new password is born!
     return ''.join(random_password)
 
 # === Window ===========================================================================================================
