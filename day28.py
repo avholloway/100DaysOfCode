@@ -49,16 +49,21 @@ def count_down(count):
         if running and cycle_number < len(cycles):
             count_down(cycles[cycle_number] * 60)
         
-        # was the cycle we just finished a work (even) or break (odd) cycle?
-        if cycle_number % 2 == 0:
-            label1.config(text="Work Time")
-            
-            # update our progress bar for the work cycle we're currently on (work cycles are half the total cycles)
-            work_cycle = cycle_number // 2 + 1
-            work_cycles_left = work_cycles - work_cycle
-            label2.config(text=f"{progress_complete * work_cycle}{progress_incomplete * work_cycles_left}")
+            # was the cycle we just finished a work (even) or break (odd) cycle?
+            if cycle_number % 2 == 0:
+                label1.config(text="Work Time")
+                
+                # update our progress bar for the work cycle we're currently on (work cycles are half the total cycles)
+                work_cycle = cycle_number // 2 + 1
+                work_cycles_left = work_cycles - work_cycle
+                label2.config(text=f"{progress_complete * work_cycle}{progress_incomplete * work_cycles_left}")
+            else:
+                label1.config(text="Break Time")
+                
         else:
-            label1.config(text="Break Time")
+            
+            # start completely over so they don't have to manually start again
+            start_timer()
             
     else:
         
