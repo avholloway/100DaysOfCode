@@ -5,7 +5,7 @@ from random import choice, randint
 
 email_server = "mail.avholloway.com"
 email_account = "anthony@avholloway.com"
-email_password = "9YjfkHuuD3iRTjg"
+email_password = "$9YjfkHuuD3iRTjg&"
 
 email_subject = "Python: Testing"
 email_body = """This is the body of the email.
