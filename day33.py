@@ -1,24 +1,44 @@
-from tkinter import *
+import time
 import requests
+from datetime import datetime as dt
 
-def get_quote():
-    response = requests.get(url="https://api.kanye.rest/")
-    response.raise_for_status()
-    canvas.itemconfig(quote_text, text=response.json()["quote"])
+my_location = {
+    "latitude": 45.098120,
+    "longitude": -93.444530
+}
 
+parameters = {
+    "lat": my_location["latitude"],
+    "lng": my_location["longitude"],
+    "formatted": 0
+}
 
-window = Tk()
-window.title("Kanye Says...")
-window.config(padx=50, pady=50)
+response = requests.get(url="https://api.sunrise-sunset.org/json", params=parameters)
+response.raise_for_status()
+data = response.json()
 
-canvas = Canvas(width=300, height=414)
-background_img = PhotoImage(file="day33background.png")
-canvas.create_image(150, 207, image=background_img)
-quote_text = canvas.create_text(150, 207, text="Kanye Quote Goes HERE", width=250, font=("Arial", 30, "bold"), fill="white")
-canvas.grid(row=0, column=0)
+sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
+sunset = int(data["results"]["sunset"].split("T")[1].split(":")[0])
 
-kanye_img = PhotoImage(file="day33kanye.png")
-kanye_button = Button(image=kanye_img, highlightthickness=0, command=get_quote)
-kanye_button.grid(row=1, column=0)
+def is_dark_now(sunrise, sunset):
+    now = int(str(dt.utcnow()).split(" ")[1].split(":")[0])
+    return now < sunrise or now > sunset
 
-window.mainloop()
+def is_iss_overhead(iss, you):
+    margin = 5
+    lat_distance = abs(you["latitude"] - iss["latitude"])
+    lng_distance = abs(you["longitude"] - iss["longitude"])
+    return lat_distance <= margin and lng_distance <= margin
+
+response = requests.get(url="http://api.open-notify.org/iss-now.json")
+response.raise_for_status()
+data = response.json()
+
+iss_position = {k:float(v) for k, v in data["iss_position"].items()}
+
+while True:
+    if is_dark_now(sunrise, sunset) and is_iss_overhead(iss_position, my_location):
+        print("Hey! The ISS is over your house! Go outside and look for it!")
+    else:
+        print("Nothing to see here. Move it along.")
+    time.sleep(60)
