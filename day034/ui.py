@@ -39,14 +39,21 @@ class QuizInterface:
 
         self.window.mainloop()
 
+    def update_score(self):
+        self.score_lbl["text"] = f"Score: {self.quiz_brain.score}"
+
     def get_next_question(self):
-        self.canvas.itemconfig(
-            self.question_txt,
-            text=self.quiz_brain.next_question()
-        )
+        if self.quiz_brain.still_has_questions():
+            self.update_score()
+            self.canvas.itemconfig(
+                self.question_txt,
+                text=self.quiz_brain.next_question()
+            )
 
     def true_btn_click(self):
-        pass
+        self.quiz_brain.check_answer("true")
+        self.get_next_question()
 
     def false_btn_click(self):
-        pass
+        self.quiz_brain.check_answer("false")
+        self.get_next_question()
