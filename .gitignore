@@ -3,7 +3,6 @@ test.py
 day29data.csv
 .vscode
 .DS_Store
-**/twilio.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
