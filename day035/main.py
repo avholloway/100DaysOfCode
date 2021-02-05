@@ -1,6 +1,9 @@
 import requests
 from twilio.rest import Client
 
+account_sid = os.environ['TWILIO_ACCOUNT_SID']
+auth_token = os.environ['TWILIO_AUTH_TOKEN']
+
 API_KEY = "c83481b4a6c6d5ab83aa5f1559d69b88"
 
 location = {
@@ -22,4 +25,12 @@ for hour in next12_hours:
     weather = hour['weather'][0]
     print(f"Weather: {weather['id']} ({weather['description']})")
 
-# print(json.dumps(data, indent=4))
+client = Client(account_sid, auth_token)
+
+message = client.messages.create(
+    body="Join Earth's mightiest heroes. Like Kevin Bacon.",
+    from_='+16124293700',
+    to='+16128892514'
+)
+
+print(message.status)
