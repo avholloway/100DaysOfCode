@@ -19,15 +19,31 @@
     margin: 0;
 }
 
-#section-1 {
+body {
+    font-family: 'Merriweather', serif;
+    text-align: center;
+}
+
+
+/*
+    cloud, h1, tagline, cloud, mountain all on blue background
+*/
+.top-container {
+    padding-top: 20px;
+    position: relative;
     text-align: center;
     color: #07689f;
     background-color: #a2d5f2;
-    width: 200px;
+}
+
+#cloud-1 {
+    position: relative;
+    left: 200px;
 }
 
 h1 {
-    font-size: 200%;
+    font-family: 'Sacramento', cursive;
+    font-size: 400%;
     font-weight: bold;
 }
 
@@ -35,18 +51,97 @@ h1 {
     font-weight: bold;
 }
 
-#section-2 {
-    border: solid 20px green;
-    background-color: red;
-    margin-left: 200px;
-    width: 200px;
-    height: 200px;
+#cloud-2 {
+    position: relative;
+    left: -200px;
 }
 
-#section-3 {
-    border: solid 10px black;
-    background-color: blue;
-    margin-left: 440px;
-    width: 200px;
-    height: 200px;
+#mountain-1 {
+}
+
+.middle-container {
+    margin-top: 8rem;
+}
+
+.profile-photo, .beer-icon, .steering-wheel-icon {
+    margin-right: 2rem;
+    float: left;
+    width: 25%;
+}
+
+.beer-icon {
+    margin-left: 2rem;
+    float: right;
+}
+
+.bottom-container {
+    margin-top: 4rem;
+    padding: 4rem 0;
+    background-color: #a2d5f2;
+    color: white;
+}
+
+h2, h3, .btn {
+    color: #ff7e67;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    margin: 1rem 0;
+}
+
+h2 {
+    font-size: 166%;
+}
+
+h3 {
+    font-size: 133%;
+}
+
+a {
+    color: #ff7e67;
+}
+
+p {
+    line-height: 2;
+}
+
+.profile, .skills, .contact-me {
+    margin: 0 auto;
+    width: 50%;
+    text-align: left;
+}
+
+.skills h2, .contact-me h2 {
+    padding-top: 4rem;
+    text-align: center;
+    clear: both;
+}
+
+.contact-me h2 {
+    margin-bottom: 2rem;
+}
+
+.skill-row {
+    margin: 4em 0;
+}
+
+.btn {
+    background: #ff7e67;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: block;
+    width: 25%;
+    margin: 2rem auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.footer-link {
+    margin: 0 2rem;
+    text-decoration: none;
+}
+
+.bottom-container p {
+    margin: 2rem 0;
 }
