@@ -21,20 +21,15 @@ def page_about():
     return render_template("about.html")
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["POST", "GET"])
 def page_contact():
-    return render_template("contact.html")
-
-
-@app.route("/form", methods=["POST", "GET"])
-def form_submission():
     if request.method == 'POST':
         name = request.form['name']
         message = request.form['message']
-        print(name)
-        print(message)
+        print(f"{name=}, {message=}")
         return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
-    return json.dumps({'success':False}), 400, {'ContentType':'application/json'}
+    elif request.method == "GET":
+        return render_template("contact.html")
 
 
 @app.route("/post/<int:id>")
