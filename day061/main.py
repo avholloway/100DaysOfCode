@@ -4,6 +4,7 @@ from flask import Flask, render_template
 from wtforms.validators import DataRequired, Email
 from wtforms import StringField, PasswordField, SubmitField
 
+# timezone hack for green boxes on github
 
 app = Flask(__name__)
 Bootstrap(app)
