@@ -12,5 +12,52 @@
 {% block content %}
 <div class="content">
     <h1 class="heading">Add a Movie</h1>
+    <form action="{{ url_for('add') }}" method="POST">
+
+      <table>
+
+        <tr>
+          <td><label>Movie Title</label></td>
+          <td><input name="title" type="text"></td>
+        </tr>
+
+        <tr>
+          <td><label>Year</label></td>
+          <td><input name="year" type="text"></td>
+        </tr>
+
+        <tr>
+          <td><label>Description</label></td>
+          <td><input name="description" type="text"></td>
+        </tr>
+
+        <tr>
+          <td><label>Rating</label></td>
+          <td><input name="rating" type="text"></td>
+        </tr>
+
+        <tr>
+          <td><label>Ranking</label></td>
+          <td><input name="ranking" type="text"></td>
+        </tr>
+
+        <tr>
+          <td><label>Review</label></td>
+          <td><input name="review" type="text"></td>
+        </tr>
+
+        <tr>
+          <td><label>Image URL</label></td>
+          <td><input name="img" type="text"></td>
+        </tr>
+
+        <tr>
+          <td><button type="submit">Add</button></td>
+          <td><a href="{{ url_for('home') }}">Home</a></td>
+        </tr>
+
+    </table>
+  </form>
+
 </div>
 {% endblock %}
