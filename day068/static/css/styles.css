@@ -32,6 +32,8 @@ a {
 }
 p {
     color: #ee6f57;
+	font-weight: bold;
+	font-size: 2rem;
     text-align: center;
 }
 
